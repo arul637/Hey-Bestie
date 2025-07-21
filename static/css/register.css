@@ -1,0 +1,184 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+}
+
+/* Full Page Setup */
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  overflow-x: hidden;
+  overflow-y: auto; /* ✅ Allow vertical scrolling */
+}
+
+/* Page Wrapper */
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Register Box */
+.register-box {
+  background-color: #fff;
+  padding: 35px 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+}
+
+/* Heading */
+.register-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+/* Labels & Inputs */
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+form input:focus,
+form select:focus {
+  border-color: var(--primary-color);
+}
+
+/* Submit Button */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Login Link */
+.login-link {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Tablet Screens */
+@media (max-width: 768px) {
+  .register-box {
+    padding: 25px 20px;
+  }
+
+  form input,
+  form select {
+    font-size: 14px;
+  }
+
+  button[type="submit"] {
+    font-size: 15px;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  html, body {
+    height: auto;
+    overflow-y: auto; /* ✅ Ensure scroll on small screens */
+  }
+
+  .page-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 10px;
+    min-height: auto;
+  }
+
+  .register-box {
+    padding: 20px 15px;
+    border-radius: 8px;
+    box-shadow: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .register-box h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  button[type="submit"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  form label {
+    font-size: 14px;
+  }
+
+  .login-link {
+    font-size: 13px;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 360px) {
+  .register-box {
+    padding: 15px 10px;
+  }
+
+  .register-box h2 {
+    font-size: 18px;
+  }
+}
+
+/* Wide Screens */
+@media (min-width: 1600px) {
+  .register-box {
+    max-width: 500px;
+  }
+}

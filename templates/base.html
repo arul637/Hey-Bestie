@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/root.css') }}" />
+  <style>
+    :root {
+      --header-height: 60px;
+      --header-bg: #3498db;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding-top: var(--header-height);
+      min-height: 100vh;
+      background-color: #f5f6fa;
+    }
+
+    /* ✅ Fixed Responsive Header */
+    .app-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background-color: var(--header-bg);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 15px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .app-header .container {
+      width: 100%;
+      max-width: 1140px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .user-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .username {
+      font-size: 16px;
+      white-space: nowrap;
+    }
+
+    .logout-btn {
+      background-color: #f44336;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background-color: #d32f2f;
+    }
+
+    /* ✅ Flash Messages */
+    .flash-messages {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 999;
+      max-width: 300px;
+      text-align: right;
+      animation: fadeOut 0.5s ease-in-out 2.5s forwards;
+    }
+
+    .flash {
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 15px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .flash-error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .flash-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translateY(10px);
+        visibility: hidden;
+      }
+    }
+
+    /* ✅ Responsive Header Styles */
+    @media (max-width: 768px) {
+      .app-header {
+        height: auto;
+        padding: 10px 15px;
+      }
+
+      .app-header .container {
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .username {
+        font-size: 15px;
+      }
+
+      .logout-btn {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 18px;
+      }
+
+      .username {
+        font-size: 14px;
+      }
+
+      .logout-btn {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
+    }
+  </style>
+  {% block title %}{% endblock %}
+  {% block styles %}{% endblock %}
+</head>
+
+<body>
+  <!-- ✅ Fixed App Header -->
+  <header class="app-header">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center;
+      gap: 10px;">
+        <img width="50" style="border-radius: 50%;" src="../static/image/Black_HB.png" alt="HB logo">
+        <h2 class="logo">Hey Bestie</h2>
+      </div>
+      
+      {% if session.user %}
+      <div class="user-section">
+        <span class="username">Hi, {{ session.user.name }}</span>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+      </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- ✅ Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- ✅ Dynamic Body Section -->
+  {% block body %}{% endblock %}
+
+  <!-- ✅ Page Scripts -->
+  {% block scripts %}{% endblock %}
+</body>
+</html>

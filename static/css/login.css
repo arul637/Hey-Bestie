@@ -1,0 +1,162 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+}
+
+/* Enable vertical scrolling */
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  overflow-x: hidden;
+}
+
+/* Flex layout for center alignment */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Login container */
+.login-container {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Heading */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Form Elements */
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+form input:focus {
+  border-color: var(--primary-color);
+}
+
+/* Submit Button */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Register link */
+.register-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 25px 25px;
+    max-width: 90%;
+  }
+
+  form input {
+    font-size: 14px;
+  }
+
+  button[type="submit"] {
+    font-size: 15px;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+    margin-top: 10rem;
+    padding: 10px;
+  }
+
+  .login-container {
+    padding: 20px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .login-container h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  button[type="submit"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  form label {
+    font-size: 14px;
+  }
+
+  .register-link {
+    font-size: 13px;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+  .login-container {
+    padding: 15px 10px;
+  }
+
+  .login-container h2 {
+    font-size: 18px;
+  }
+}

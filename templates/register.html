@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+<title>Register</title>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="page-wrapper">
+    <div class="register-box">
+      <h2>Create Account</h2>
+      <form action="#" method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email ID</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+
+        <button type="submit">Register</button>
+
+        <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
+      </form>
+    </div>
+</div>
+{% endblock %}
